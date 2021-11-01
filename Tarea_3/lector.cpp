@@ -15,8 +15,13 @@ Lector::~Lector()
 
 vector<Libro*> Lector::leerArchivo(string nombreArchivo)
 {
-    std::istringstream archivoEntrada{ nombreArchivo };
-
+    //std::istringstream archivoEntrada{ nombreArchivo };
+    ifstream archivoEntrada(nombreArchivo, ifstream::in);
+    if (!archivoEntrada.is_open())
+    {
+        cerr << "Error leyendo archivo: " << nombreArchivo << endl;
+        exit;
+    }
     // Leer línea por línea 
     string linea{ "" };
     int id{ 0 };

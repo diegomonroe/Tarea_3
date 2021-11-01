@@ -5,14 +5,14 @@ using namespace std;
 
 Libro::Libro(int id, string nombre, string apellido, string correo) {
     this->id = id;
-    strcpy(this->nombre, nombre.c_str());
-    strcpy(this->apellido, apellido.c_str());
-    strcpy(this->correo, apellido.c_str());
+    strcpy_s(this->nombre, nombre.c_str());
+    strcpy_s(this->apellido, apellido.c_str());
+    strcpy_s(this->correo, apellido.c_str());
 }
 
 Libro::Libro() {
     this->id = 0;
-    strcpy(this->nombre, "");
-    strcpy(this->apellido, "");
-    strcpy(this->correo, "");
+    strcpy_s(this->nombre, "");
+    strcpy_s(this->apellido, "");
+    strcpy_s(this->correo, "");
 }
