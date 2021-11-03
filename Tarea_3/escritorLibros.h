@@ -4,16 +4,17 @@
 #include <string>
 #include "libro.h"
 #include "lector.h"
+#include <fstream>
 class EscritorLibros {
 
-    std::string nombreArchivo;
+    ofstream archivoSalida;
 
     public:
     EscritorLibros(std::string nombre);
     
     void llenarArchivoSalida();
-    void AgregarLibro(Libro libro);
-    void Cerrar();
+    void agregarLibro(Libro &libro);
+    void cerrar();
 
 };
 
