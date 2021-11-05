@@ -147,6 +147,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="escritorLibros.h" />
+    <ClInclude Include="excepcionLibroNoExiste.h" />
+    <ClInclude Include="excepcionNoSePuedeAbrirArchivo.h" />
     <ClInclude Include="lector.h" />
     <ClInclude Include="lectorLibros.h" />
     <ClInclude Include="libro.h" />

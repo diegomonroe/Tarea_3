@@ -3,6 +3,7 @@
 
 #include "libro.h"
 #include "escritorLibros.h"
+#include "lectorLibros.h"
 #include "string.h"
 
 using namespace std;
@@ -10,27 +11,16 @@ using namespace std;
 int main() {
 
     EscritorLibros archivoSalida {"libros.dat"};
-    archivoSalida.llenarArchivoSalida();
-    // Ejemplo 2: Leer archivo
-    ifstream archivoEntrada;
-    archivoEntrada.open("libros.dat", ios::in|ios::binary);
+    archivoSalida.llenarArchivoSalida("personas.txt");
+    archivoSalida.cerrar();
+    
 
-    if (!archivoEntrada.is_open())
-    {
-        cerr << "No se pudo abrir archivo libros.dat para leer los datos";
-        return -1;
-    }
+    LectorLibros archivoEntrada{ "libros.dat" };
+    int numeroLibro = 15;
+    Libro libro = archivoEntrada.ObtenerLibro(numeroLibro-1);
+    archivoEntrada.cerrar();
 
-    Libro libro1LeidoDeArchivo;
-    Libro libro2LeidoDeArchivo;
-    Libro libro3LeidoDeArchivo;
-
-    //archivoEntrada.seekg(sizeof(Libro));
-    archivoEntrada.read((char *) &libro1LeidoDeArchivo, sizeof(Libro));
-    archivoEntrada.read((char *) &libro2LeidoDeArchivo, sizeof(Libro));
-    archivoEntrada.read((char *) &libro3LeidoDeArchivo, sizeof(Libro));
-
-    archivoEntrada.close();
+    cout << "Empleado #" << numeroLibro << " " << libro.getNombre() << endl;
 
     return 0;
 

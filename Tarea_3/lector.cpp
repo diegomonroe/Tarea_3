@@ -15,7 +15,6 @@ Lector::~Lector()
 
 vector<Libro*> Lector::leerArchivo(string nombreArchivo)
 {
-    //std::istringstream archivoEntrada{ nombreArchivo };
     ifstream archivoEntrada(nombreArchivo, ifstream::in);
     if (!archivoEntrada.is_open())
     {

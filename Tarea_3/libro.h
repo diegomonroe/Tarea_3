@@ -14,6 +14,12 @@ class Libro
     public:
     Libro(int id, string nombre, string apellido, string correo);
     Libro();
+
+    int getID();
+    string getNombre();
+    string getApellido();
+    string getCorreo();
+
 };
 
 

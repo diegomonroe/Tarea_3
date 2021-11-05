@@ -10,9 +10,9 @@ class EscritorLibros {
     ofstream archivoSalida;
 
     public:
-    EscritorLibros(std::string nombre);
+    EscritorLibros(string nombre);
     
-    void llenarArchivoSalida();
+    void llenarArchivoSalida(string archivoEntrada);
     void agregarLibro(Libro &libro);
     void cerrar();
 

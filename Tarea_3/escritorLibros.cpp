@@ -1,8 +1,8 @@
 #include "escritorLibros.h"
 
 #include <iostream>
-EscritorLibros::EscritorLibros(std::string nombre) {
-    //this->nombreArchivo = nombre;
+EscritorLibros::EscritorLibros(string nombre) {
+
     archivoSalida.open(nombre, ios::out | ios::binary);
 
     if (!archivoSalida.is_open())
@@ -12,20 +12,15 @@ EscritorLibros::EscritorLibros(std::string nombre) {
     }
 }
 
-void EscritorLibros::llenarArchivoSalida()
+void EscritorLibros::llenarArchivoSalida(string nombreArchivoEntrada)
 {
     Lector lectorArchivoEntrada;
-    vector<Libro*> coleccionLibros = lectorArchivoEntrada.leerArchivo("personas.txt");
-    
-    // Ejemplo 1: Escribir archivo
-    // 
-    //archivoSalida.close();
+    vector<Libro*> coleccionLibros = lectorArchivoEntrada.leerArchivo(nombreArchivoEntrada);
+ 
     for (Libro* libro : coleccionLibros) {
         
         agregarLibro(*libro);
     }
-
-    archivoSalida.close();
 }
 
 void EscritorLibros::agregarLibro(Libro &libro)
