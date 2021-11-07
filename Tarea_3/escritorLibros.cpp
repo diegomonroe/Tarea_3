@@ -1,21 +1,20 @@
 #include "escritorLibros.h"
-
+#include "excepcionNoSePuedeAbrirArchivo.h"
 #include <iostream>
-EscritorLibros::EscritorLibros(string nombre) {
+EscritorLibros::EscritorLibros(string nombreArchivo) {
 
-    archivoSalida.open(nombre, ios::out | ios::binary);
+    archivoSalida.open(nombreArchivo, ios::out | ios::binary);
 
     if (!archivoSalida.is_open())
     {
-        cerr << "No se pudo abrir archivo libros.dat para escribir los datos";
-        return;
+        throw ExcepcionNoSePuedeAbrirArchivo(nombreArchivo);
     }
 }
 
 void EscritorLibros::llenarArchivoSalida(string nombreArchivoEntrada)
 {
-    Lector lectorArchivoEntrada;
-    vector<Libro*> coleccionLibros = lectorArchivoEntrada.leerArchivo(nombreArchivoEntrada);
+    Lector lectorArchivoEntrada(nombreArchivoEntrada);
+    vector<Libro*> coleccionLibros = lectorArchivoEntrada.getColeccionLibros();
  
     for (Libro* libro : coleccionLibros) {
         

@@ -5,22 +5,38 @@
 #include "escritorLibros.h"
 #include "lectorLibros.h"
 #include "string.h"
+#include "excepcionLibroNoExiste.h"
+#include "excepcionNoSePuedeAbrirArchivo.h"
 
-using namespace std;
+using namespace std; 
 
 int main() {
-
-    EscritorLibros archivoSalida {"libros.dat"};
-    archivoSalida.llenarArchivoSalida("personas.txt");
-    archivoSalida.cerrar();
+    try
+    {
+        EscritorLibros archivoSalida {"libros.dat"};
+        archivoSalida.llenarArchivoSalida("personas.txt");
+        archivoSalida.cerrar();
     
+    
+        LectorLibros archivoEntrada{ "libros.dat" };
+        int numeroLibro = 17;
+        Libro libro = archivoEntrada.ObtenerLibro(numeroLibro-1);
+        archivoEntrada.cerrar();
 
-    LectorLibros archivoEntrada{ "libros.dat" };
-    int numeroLibro = 15;
-    Libro libro = archivoEntrada.ObtenerLibro(numeroLibro-1);
-    archivoEntrada.cerrar();
-
-    cout << "Empleado #" << numeroLibro << " " << libro.getNombre() << endl;
+        cout << "Empleado #" << numeroLibro << " " << libro.getNombre() << endl;
+    }
+    catch (const ExcepcionLibroNoExiste& excepcion)
+    {
+        std::cerr << "Error leyendo el libro solicitado. " << excepcion.what() << '\n';
+    }
+    catch (const ExcepcionNoSePuedeAbrirArchivo& excepcion)
+    {
+        std::cerr << "Error abriendo" << excepcion.what() << '\n';
+    }
+    catch(const exception& excepcion)
+    {
+        std::cerr << "Catch en main de la excepción desconocida: " << excepcion.what() << '\n';
+    }
 
     return 0;
 

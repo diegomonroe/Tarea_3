@@ -10,7 +10,7 @@ LectorLibros::LectorLibros(string nombreArchivo) {
 
     if (!archivoEntrada.is_open())
     {
-        throw new ExcepcionNoSePuedeAbrirArchivo();
+        throw ExcepcionNoSePuedeAbrirArchivo(nombreArchivo);
     }
 
 }
@@ -26,9 +26,9 @@ Libro LectorLibros::ObtenerLibro(int idLibro) {
     long fileSize = archivoEntrada.tellg();
 
     // Vamos a caer afuera?
-    if (posicionLibro > fileSize)
+    if (posicionLibro >= fileSize)
     {
-        throw new ExcepcionLibroNoExiste();
+        throw  ExcepcionLibroNoExiste();
     }
 
     archivoEntrada.seekg(posicionLibro);

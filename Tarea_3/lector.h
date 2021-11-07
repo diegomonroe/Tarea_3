@@ -3,6 +3,7 @@
 #define EMPLEADO_H
 
 #include "libro.h"
+#include <fstream>
 #include <string>
 #include <vector>
 using namespace std;
@@ -11,10 +12,12 @@ using namespace std;
 class Lector
 {
 	vector <Libro*> coleccionLibros;
+	ifstream archivoALeer;
 	public:
-		Lector();
+		Lector(string nombreArchivo);
 		~Lector();
-		vector<Libro*> leerArchivo(string nombreArchivo);
+		void leerArchivo();
+		vector<Libro*> getColeccionLibros();
 };
 
 #endif

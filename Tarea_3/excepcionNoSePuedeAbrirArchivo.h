@@ -6,12 +6,17 @@
 
 class ExcepcionNoSePuedeAbrirArchivo : public std::exception
 {
-public:
-    ExcepcionNoSePuedeAbrirArchivo() noexcept = default;
+    string archivoError{};
+    public:
+    ExcepcionNoSePuedeAbrirArchivo(string archivoError) noexcept {
+        this->archivoError = archivoError;
+    };
     ~ExcepcionNoSePuedeAbrirArchivo() = default;
 
     virtual const char* what() const noexcept {
-        return "No se puede abrir archivo";
+        string mensaje = "No se puede abrir archivo " + archivoError;
+        const char* excepcion = mensaje.c_str();
+        return excepcion;
     }
 
 };

@@ -2,8 +2,15 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
-Lector::Lector()
+#include "excepcionNoSePuedeAbrirArchivo.h"
+Lector::Lector(string nombreArchivo)
 {
+    archivoALeer.open(nombreArchivo, ios::in | ios::binary);
+
+    if (!archivoALeer.is_open())
+    {
+        throw ExcepcionNoSePuedeAbrirArchivo(nombreArchivo);
+    }
 }
 
 Lector::~Lector()
@@ -13,14 +20,9 @@ Lector::~Lector()
     }
 }
 
-vector<Libro*> Lector::leerArchivo(string nombreArchivo)
+void Lector::leerArchivo()
 {
-    ifstream archivoEntrada(nombreArchivo, ifstream::in);
-    if (!archivoEntrada.is_open())
-    {
-        cerr << "Error leyendo archivo: " << nombreArchivo << endl;
-        exit;
-    }
+    
     // Leer línea por línea 
     string linea{ "" };
     int id{ 0 };
@@ -29,7 +31,7 @@ vector<Libro*> Lector::leerArchivo(string nombreArchivo)
     string correo{ "" };
 
 
-    while (getline(archivoEntrada, linea)) {
+    while (getline(this->archivoALeer, linea)) {
 
         try
         {
@@ -57,5 +59,9 @@ vector<Libro*> Lector::leerArchivo(string nombreArchivo)
             cerr << excepcion << endl;
         }
     }
+}
+
+vector<Libro*> Lector::getColeccionLibros()
+{
     return this->coleccionLibros;
 }
