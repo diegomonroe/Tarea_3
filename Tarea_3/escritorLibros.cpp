@@ -7,19 +7,21 @@ EscritorLibros::EscritorLibros(string nombreArchivo) {
 
     if (!archivoSalida.is_open())
     {
-        throw ExcepcionNoSePuedeAbrirArchivo(nombreArchivo);
+        throw ExcepcionNoSePuedeAbrirArchivo(nombreArchivo + " en escritor libros");
     }
 }
 
 void EscritorLibros::llenarArchivoSalida(string nombreArchivoEntrada)
 {
-    Lector lectorArchivoEntrada(nombreArchivoEntrada);
-    vector<Libro*> coleccionLibros = lectorArchivoEntrada.getColeccionLibros();
+    Lector *lectorArchivoEntrada = new Lector(nombreArchivoEntrada);
+    lectorArchivoEntrada->leerArchivo();
+    vector<Libro*> coleccionLibros = lectorArchivoEntrada->getColeccionLibros();
  
     for (Libro* libro : coleccionLibros) {
         
         agregarLibro(*libro);
     }
+    delete lectorArchivoEntrada;
 }
 
 void EscritorLibros::agregarLibro(Libro &libro)

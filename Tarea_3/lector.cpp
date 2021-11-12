@@ -5,7 +5,7 @@
 #include "excepcionNoSePuedeAbrirArchivo.h"
 Lector::Lector(string nombreArchivo)
 {
-    archivoALeer.open(nombreArchivo, ios::in | ios::binary);
+    archivoALeer.open(nombreArchivo);
 
     if (!archivoALeer.is_open())
     {

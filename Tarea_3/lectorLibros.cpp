@@ -3,6 +3,7 @@
 #include "lectorLibros.h"
 #include "excepcionLibroNoExiste.h"
 #include "excepcionNoSePuedeAbrirArchivo.h"
+#include "excepcionPersonaNoValida.h"
 
 LectorLibros::LectorLibros(string nombreArchivo) {
 
@@ -10,7 +11,7 @@ LectorLibros::LectorLibros(string nombreArchivo) {
 
     if (!archivoEntrada.is_open())
     {
-        throw ExcepcionNoSePuedeAbrirArchivo(nombreArchivo);
+        throw ExcepcionNoSePuedeAbrirArchivo(nombreArchivo + " en lector libros.");
     }
 
 }
@@ -20,19 +21,23 @@ Libro LectorLibros::ObtenerLibro(int idLibro) {
     Libro libroLeido;
 
     // Posición del libro número idLibro
-    long posicionLibro = sizeof(Libro) * (idLibro);
+    long posicionLibro = sizeof(Libro) * (idLibro-1);
 
     archivoEntrada.seekg(0, ios::end);
     long fileSize = archivoEntrada.tellg();
 
     // Vamos a caer afuera?
-    if (posicionLibro >= fileSize)
+    if (posicionLibro >= fileSize || posicionLibro<0)
     {
         throw  ExcepcionLibroNoExiste();
     }
 
     archivoEntrada.seekg(posicionLibro);
     archivoEntrada.read((char*)&libroLeido, sizeof(Libro));
+
+    if (libroLeido.getID() == 0) {
+        throw ExcepcionPersonaNoValida();
+    }
 
     return libroLeido;
 }

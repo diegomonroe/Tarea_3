@@ -14,13 +14,13 @@ int main() {
     try
     {
         EscritorLibros archivoSalida {"libros.dat"};
-        archivoSalida.llenarArchivoSalida("personas.txt");
+        //archivoSalida.llenarArchivoSalida("personas.txt");
         archivoSalida.cerrar();
     
     
-        LectorLibros archivoEntrada{ "libros.dat" };
-        int numeroLibro = 17;
-        Libro libro = archivoEntrada.ObtenerLibro(numeroLibro-1);
+        LectorLibros archivoEntrada{"libros.dat"};
+        int numeroLibro = 1;
+        Libro libro = archivoEntrada.ObtenerLibro(numeroLibro);
         archivoEntrada.cerrar();
 
         cout << "Empleado #" << numeroLibro << " " << libro.getNombre() << endl;
@@ -31,7 +31,7 @@ int main() {
     }
     catch (const ExcepcionNoSePuedeAbrirArchivo& excepcion)
     {
-        std::cerr << "Error abriendo" << excepcion.what() << '\n';
+        std::cerr << "Error abriendo: " << excepcion.what() << '\n';
     }
     catch(const exception& excepcion)
     {

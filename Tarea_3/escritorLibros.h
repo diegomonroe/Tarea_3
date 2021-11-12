@@ -1,5 +1,5 @@
-#ifndef EscritorLibros_H
-#define EscritorLibros_H
+#ifndef ESCRITORLIBROS_H
+#define ESCRITORLIBROS_H
 
 #include <string>
 #include "libro.h"
