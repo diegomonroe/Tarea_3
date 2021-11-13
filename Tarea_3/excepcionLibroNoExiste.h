@@ -7,7 +7,7 @@
 
 class ExcepcionLibroNoExiste : public std::exception
 {
-public:
+    public:
     ExcepcionLibroNoExiste() noexcept = default;
     ~ExcepcionLibroNoExiste() = default;
 

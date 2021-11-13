@@ -11,6 +11,7 @@ class Libro
     char nombre[15];
     char apellido [15];
     char correo[50];
+
     public:
     Libro(int id, string nombre, string apellido, string correo);
     Libro();
@@ -21,6 +22,4 @@ class Libro
     string getCorreo();
 
 };
-
-
 #endif

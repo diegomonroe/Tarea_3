@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="escritorLibros.cpp" />
-    <ClCompile Include="lector.cpp" />
     <ClCompile Include="lectorLibros.cpp" />
     <ClCompile Include="libro.cpp" />
     <ClCompile Include="main.cpp" />
@@ -150,7 +149,6 @@
     <ClInclude Include="excepcionLibroNoExiste.h" />
     <ClInclude Include="excepcionNoSePuedeAbrirArchivo.h" />
     <ClInclude Include="excepcionPersonaNoValida.h" />
-    <ClInclude Include="lector.h" />
     <ClInclude Include="lectorLibros.h" />
     <ClInclude Include="libro.h" />
   </ItemGroup>

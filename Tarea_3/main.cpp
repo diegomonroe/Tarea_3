@@ -4,17 +4,23 @@
 #include "libro.h"
 #include "escritorLibros.h"
 #include "lectorLibros.h"
-#include "string.h"
 #include "excepcionLibroNoExiste.h"
 #include "excepcionNoSePuedeAbrirArchivo.h"
+#include "excepcionPersonaNoValida.h"
 
 using namespace std; 
 
 int main() {
     try
     {
+        ifstream streamEntrada("personas.txt", ifstream::in);
+        if (!streamEntrada.is_open())
+        {
+            throw ExcepcionNoSePuedeAbrirArchivo("personas.txt");
+        }
+        
         EscritorLibros archivoSalida {"libros.dat"};
-        //archivoSalida.llenarArchivoSalida("personas.txt");
+        archivoSalida.llenarArchivoSalida(&streamEntrada);
         archivoSalida.cerrar();
     
     
@@ -27,15 +33,19 @@ int main() {
     }
     catch (const ExcepcionLibroNoExiste& excepcion)
     {
-        std::cerr << "Error leyendo el libro solicitado. " << excepcion.what() << '\n';
+        cerr << "Error leyendo el libro solicitado. " << excepcion.what() << '\n';
     }
     catch (const ExcepcionNoSePuedeAbrirArchivo& excepcion)
     {
-        std::cerr << "Error abriendo: " << excepcion.what() << '\n';
+        cerr << "Error abriendo: " << excepcion.what() << '\n';
+    }
+    catch (const ExcepcionPersonaNoValida& excepcion)
+    {
+        cerr << excepcion.what() << '\n';
     }
     catch(const exception& excepcion)
     {
-        std::cerr << "Catch en main de la excepción desconocida: " << excepcion.what() << '\n';
+        cerr << "Catch en main de la excepción desconocida: " << excepcion.what() << '\n';
     }
 
     return 0;

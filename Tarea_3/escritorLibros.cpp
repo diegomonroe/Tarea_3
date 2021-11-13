@@ -1,6 +1,10 @@
 #include "escritorLibros.h"
 #include "excepcionNoSePuedeAbrirArchivo.h"
+#include "excepcionPersonaNoValida.h"
+
 #include <iostream>
+#include <sstream>
+
 EscritorLibros::EscritorLibros(string nombreArchivo) {
 
     archivoSalida.open(nombreArchivo, ios::out | ios::binary);
@@ -11,17 +15,43 @@ EscritorLibros::EscritorLibros(string nombreArchivo) {
     }
 }
 
-void EscritorLibros::llenarArchivoSalida(string nombreArchivoEntrada)
+void EscritorLibros::llenarArchivoSalida(istream *archivoEntrada)
 {
-    Lector *lectorArchivoEntrada = new Lector(nombreArchivoEntrada);
-    lectorArchivoEntrada->leerArchivo();
-    vector<Libro*> coleccionLibros = lectorArchivoEntrada->getColeccionLibros();
- 
-    for (Libro* libro : coleccionLibros) {
+    // Leer línea por línea 
+    string linea{ "" };
+    int id{ 0 };
+    string nombre{ "" };
+    string apellido{ "" };
+    string correo{ "" };
+
+    while (getline(*archivoEntrada, linea)) {
         
-        agregarLibro(*libro);
+        // Procesamos la línea
+        istringstream streamEntradaPersonas(linea);
+
+        id = 0;
+        nombre = "";
+        apellido = "";
+        correo = "";
+
+        streamEntradaPersonas >> id >> nombre >> apellido >> correo;
+
+        // Revisar si línea es válida
+        try
+        {
+            if (id == 0)
+            {
+                throw ExcepcionPersonaNoValida();
+            }
+            Libro* nuevoLibro = new Libro(id, nombre, apellido, correo);
+            agregarLibro(*nuevoLibro);
+            delete nuevoLibro;
+        }
+        catch (const ExcepcionPersonaNoValida& excepcion)
+        {
+            cerr << excepcion.what() << '\n';
+        }
     }
-    delete lectorArchivoEntrada;
 }
 
 void EscritorLibros::agregarLibro(Libro &libro)

@@ -13,20 +13,18 @@ LectorLibros::LectorLibros(string nombreArchivo) {
     {
         throw ExcepcionNoSePuedeAbrirArchivo(nombreArchivo + " en lector libros.");
     }
-
 }
 
 Libro LectorLibros::ObtenerLibro(int idLibro) {
 
     Libro libroLeido;
 
-    // Posición del libro número idLibro
     long posicionLibro = sizeof(Libro) * (idLibro-1);
 
     archivoEntrada.seekg(0, ios::end);
+
     long fileSize = archivoEntrada.tellg();
 
-    // Vamos a caer afuera?
     if (posicionLibro >= fileSize || posicionLibro<0)
     {
         throw  ExcepcionLibroNoExiste();
