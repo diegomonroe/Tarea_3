@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7b84924e-cedd-4c82-b57f-670e93356a80}</ProjectGuid>
-    <RootNamespace>Tarea3</RootNamespace>
+    <ProjectGuid>{5681704d-fe91-406f-9e39-c9fb234f96ee}</ProjectGuid>
+    <RootNamespace>Tarea3EscritorLibros</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>LectorArchivo</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,11 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="lectorLibros.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClInclude Include="escritorLibros.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="lectorLibros.h" />
+    <ClCompile Include="escritorLibros.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

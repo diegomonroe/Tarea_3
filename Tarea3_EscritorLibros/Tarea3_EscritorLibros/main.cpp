@@ -1,31 +1,27 @@
 #include <iostream>
 #include <fstream>
 
-#include "lectorLibros.h"
-
+#include "escritorLibros.h"
 #include "../../Compartido/libro.h"
 #include "../../Compartido/libro.cpp"
-
 #include "../../Excepciones/excepcionNoSePuedeAbrirArchivo.h"
 #include "../../Excepciones/excepcionPersonaNoValida.h"
-#include "../../Excepciones/excepcionLibroNoExiste.h"
-
 
 using namespace std; 
 
 int main() {
     try
-    {    
-        LectorLibros archivoEntrada{"libros.dat"};
-        int numeroLibro = 16;
-        Libro libro = archivoEntrada.ObtenerLibro(numeroLibro);
-        archivoEntrada.cerrar();
-
-        cout << "Empleado #" << numeroLibro << " " << libro.getNombre() << endl;
-    }
-    catch (const ExcepcionLibroNoExiste& excepcion)
     {
-        cerr << "Error leyendo el libro solicitado. " << excepcion.what() << '\n';
+        ifstream streamEntrada("personas.txt", ifstream::in);
+        if (!streamEntrada.is_open())
+        {
+            throw ExcepcionNoSePuedeAbrirArchivo("personas.txt");
+        }
+        
+        EscritorLibros archivoSalida {"libros.dat"};
+        archivoSalida.llenarArchivoSalida(&streamEntrada);
+        archivoSalida.cerrar();
+   
     }
     catch (const ExcepcionNoSePuedeAbrirArchivo& excepcion)
     {

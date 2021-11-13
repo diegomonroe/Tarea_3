@@ -1,7 +1,7 @@
 #ifndef ESCRITORLIBROS_H
 #define ESCRITORLIBROS_H
 
-#include "libro.h"
+#include "../../Compartido/libro.h"
 
 #include <fstream>
 #include <string>

@@ -1,6 +1,7 @@
 #include "escritorLibros.h"
-#include "excepcionNoSePuedeAbrirArchivo.h"
-#include "excepcionPersonaNoValida.h"
+#include "../../Compartido/libro.h"
+#include "../../Excepciones/excepcionNoSePuedeAbrirArchivo.h"
+#include "../../Excepciones/excepcionPersonaNoValida.h"
 
 #include <iostream>
 #include <sstream>

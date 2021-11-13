@@ -1,9 +1,9 @@
 #include <iostream>
 
 #include "lectorLibros.h"
-#include "excepcionLibroNoExiste.h"
-#include "excepcionNoSePuedeAbrirArchivo.h"
-#include "excepcionPersonaNoValida.h"
+#include "../../Excepciones/excepcionNoSePuedeAbrirArchivo.h"
+#include "../../Excepciones/excepcionPersonaNoValida.h"
+#include "../../Excepciones/excepcionLibroNoExiste.h"
 
 LectorLibros::LectorLibros(string nombreArchivo) {
 

@@ -1,7 +1,8 @@
 #ifndef LECTOR_LIBROS_H
 #define LECTOR_LIBROS_H
 
-#include "libro.h"
+
+#include "../../Compartido/libro.h"
 
 #include <string>
 #include <fstream>
