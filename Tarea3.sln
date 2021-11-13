@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tarea3_EscritorLibros", "Tarea3_EscritorLibros\Tarea3_EscritorLibros\Tarea3_EscritorLibros.vcxproj", "{5681704D-FE91-406F-9E39-C9FB234F96EE}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tarea3_LectorLibros", "Tarea3_LectorLibros\Tarea3_LectorLibros.vcxproj", "{F9763B7B-012A-4236-B23C-6F4DA8F01F01}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PruebasUnitarias_LectorLibros", "PruebasUnitarias_LectorLibros\PruebasUnitarias_LectorLibros.vcxproj", "{A14AAD81-42D5-4CB4-B556-9227F2509FCD}"
@@ -17,14 +15,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5681704D-FE91-406F-9E39-C9FB234F96EE}.Debug|x64.ActiveCfg = Debug|x64
-		{5681704D-FE91-406F-9E39-C9FB234F96EE}.Debug|x64.Build.0 = Debug|x64
-		{5681704D-FE91-406F-9E39-C9FB234F96EE}.Debug|x86.ActiveCfg = Debug|Win32
-		{5681704D-FE91-406F-9E39-C9FB234F96EE}.Debug|x86.Build.0 = Debug|Win32
-		{5681704D-FE91-406F-9E39-C9FB234F96EE}.Release|x64.ActiveCfg = Release|x64
-		{5681704D-FE91-406F-9E39-C9FB234F96EE}.Release|x64.Build.0 = Release|x64
-		{5681704D-FE91-406F-9E39-C9FB234F96EE}.Release|x86.ActiveCfg = Release|Win32
-		{5681704D-FE91-406F-9E39-C9FB234F96EE}.Release|x86.Build.0 = Release|Win32
 		{F9763B7B-012A-4236-B23C-6F4DA8F01F01}.Debug|x64.ActiveCfg = Debug|x64
 		{F9763B7B-012A-4236-B23C-6F4DA8F01F01}.Debug|x64.Build.0 = Debug|x64
 		{F9763B7B-012A-4236-B23C-6F4DA8F01F01}.Debug|x86.ActiveCfg = Debug|Win32
