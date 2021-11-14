@@ -16,11 +16,12 @@ using namespace std;
 int main() {
     try
     {    
-        LectorLibros archivoEntrada{"libros.dat"};
-        int numeroLibro = 16;
-        Libro libro = archivoEntrada.ObtenerLibro(numeroLibro);
-        archivoEntrada.cerrar();
-
+        LectorLibros lector{ "personas.dat" };
+        int numeroLibro = 1;
+        Libro libro = lector.ObtenerLibro(numeroLibro);
+        lector.leerArchivoCompleto();
+        cout << lector;
+        lector.cerrar();
         cout << "Empleado #" << numeroLibro << " " << libro.getNombre() << endl;
     }
     catch (const ExcepcionLibroNoExiste& excepcion)

@@ -15,6 +15,13 @@ LectorLibros::LectorLibros(string nombreArchivo) {
     }
 }
 
+LectorLibros::~LectorLibros()
+{
+    for (Libro* libro : this->coleccionLibros) {
+        delete libro;
+    }
+}
+
 Libro LectorLibros::ObtenerLibro(int idLibro) {
 
     Libro libroLeido;
@@ -23,9 +30,9 @@ Libro LectorLibros::ObtenerLibro(int idLibro) {
 
     archivoEntrada.seekg(0, ios::end);
 
-    long fileSize = archivoEntrada.tellg();
+    long tamanoArchivo = archivoEntrada.tellg();
 
-    if (posicionLibro >= fileSize || posicionLibro<0)
+    if (posicionLibro >= tamanoArchivo || posicionLibro<0)
     {
         throw  ExcepcionLibroNoExiste();
     }
@@ -40,6 +47,33 @@ Libro LectorLibros::ObtenerLibro(int idLibro) {
     return libroLeido;
 }
 
+void LectorLibros::leerArchivoCompleto()
+{
+    long tamanoLibro = sizeof(Libro);
+    archivoEntrada.seekg(0, ios::end);
+    long tamanoArchivo = archivoEntrada.tellg();
+
+    int iterador = 0;
+    while (iterador< tamanoArchivo) {
+        Libro *libroLeido = new Libro();;
+        archivoEntrada.seekg(iterador);
+        archivoEntrada.read((char*)libroLeido, sizeof(Libro));
+        coleccionLibros.push_back(libroLeido);
+        iterador += tamanoLibro;
+    }
+}
+
 void LectorLibros::cerrar() {
     archivoEntrada.close();
+}
+
+ostream& operator<<(std::ostream& o, const LectorLibros& lector)
+{
+    for (Libro* libro : lector.coleccionLibros) {
+        o << libro->getID() << " ";
+        o << libro->getNombre() << " ";
+        o << libro->getApellido() << " ";
+        o << libro->getCorreo() << endl;
+    }
+    return o;
 }

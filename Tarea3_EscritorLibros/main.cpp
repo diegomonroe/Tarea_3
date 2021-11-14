@@ -19,7 +19,7 @@ int main() {
             throw ExcepcionNoSePuedeAbrirArchivo("personas.txt");
         }
         
-        EscritorLibros archivoSalida {"libros.dat"};
+        EscritorLibros archivoSalida {"personas.dat"};
         archivoSalida.llenarArchivoSalida(&streamEntrada);
         archivoSalida.cerrar();
    
