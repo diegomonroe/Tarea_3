@@ -80,13 +80,12 @@ namespace {
         Libro libroLeido;
         ostringstream streamSalidaEsperada{};
 
-        while (archivoEntrada.tellg()<84) {
-            archivoEntrada.read((char*)&libroLeido, sizeof(Libro));
-            streamSalidaEsperada << libroLeido.getID() << " ";
-            streamSalidaEsperada << libroLeido.getNombre() << " ";
-            streamSalidaEsperada << libroLeido.getApellido() << " ";
-            streamSalidaEsperada << libroLeido.getCorreo() << endl;
-        }
+        archivoEntrada.read((char*)&libroLeido, sizeof(Libro));
+        streamSalidaEsperada << libroLeido.getID() << " ";
+        streamSalidaEsperada << libroLeido.getNombre() << " ";
+        streamSalidaEsperada << libroLeido.getApellido() << " ";
+        streamSalidaEsperada << libroLeido.getCorreo() << endl;
+        
         
         archivoEntrada.close();
         string actual = streamSalidaEsperada.str();
