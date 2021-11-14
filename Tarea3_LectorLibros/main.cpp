@@ -8,7 +8,7 @@
 
 #include "../Excepciones/excepcionNoSePuedeAbrirArchivo.h"
 #include "../Excepciones/excepcionPersonaNoValida.h"
-#include "../../Excepciones/excepcionLibroNoExiste.h"
+#include "../Excepciones/excepcionLibroNoExiste.h"
 
 
 using namespace std; 

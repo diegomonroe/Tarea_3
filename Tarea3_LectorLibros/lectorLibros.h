@@ -2,7 +2,7 @@
 #define LECTOR_LIBROS_H
 
 
-#include "../../Compartido/libro.h"
+#include "../Compartido/libro.h"
 
 #include <string>
 #include <fstream>

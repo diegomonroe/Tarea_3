@@ -1,7 +1,7 @@
 #include "escritorLibros.h"
-#include "../../Compartido/libro.h"
-#include "../../Excepciones/excepcionNoSePuedeAbrirArchivo.h"
-#include "../../Excepciones/excepcionPersonaNoValida.h"
+#include "../Compartido/libro.h"
+#include "../Excepciones/excepcionNoSePuedeAbrirArchivo.h"
+#include "../Excepciones/excepcionPersonaNoValida.h"
 
 #include <iostream>
 #include <sstream>
@@ -37,7 +37,6 @@ void EscritorLibros::llenarArchivoSalida(istream *archivoEntrada)
 
         streamEntradaPersonas >> id >> nombre >> apellido >> correo;
 
-        // Revisar si línea es válida
         try
         {
             if (id == 0)

@@ -2,10 +2,11 @@
 #include <fstream>
 
 #include "escritorLibros.h"
-#include "../../Compartido/libro.h"
-#include "../../Compartido/libro.cpp"
-#include "../../Excepciones/excepcionNoSePuedeAbrirArchivo.h"
-#include "../../Excepciones/excepcionPersonaNoValida.h"
+#include "../Compartido/libro.h"
+#include "../Compartido/libro.cpp"
+
+#include "../Excepciones/excepcionNoSePuedeAbrirArchivo.h"
+#include "../Excepciones/excepcionPersonaNoValida.h"
 
 using namespace std; 
 
